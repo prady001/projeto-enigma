@@ -1,11 +1,21 @@
 from setuptools import setup, find_packages
+import os
+
+
+def find_subdir(start_dir):
+    # Get the list of all subdirectories starting at the given path
+    subdirectories = [x[0] for x in os.walk(start_dir)]
+    subdirectories = [x.split('/',1)[-1]+'/*' for x in subdirectories]
+    return subdirectories
 
 # Lendo o conteúdo do README.md para usar como descrição longa
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+MODULE_STUB = 'hello_world'
+
 setup(
-    name="hello_world",  # Substitua pelo nome do seu pacote
+    name=MODULE_STUB,  # Substitua pelo nome do seu pacote
     version="0.1.0",
     author="Tiago Tavares",
     author_email="tiagoft@gmail.com",
@@ -15,9 +25,7 @@ setup(
     url="https://github.com/tiagoft/hello_world",  # URL do repositório do seu projeto (se houver)
     packages=find_packages(),  # Encontra automaticamente todos os pacotes no diretório
     package_data={
-    '': [
-        'assets/*.txt',
-    ],
+    '': find_subdir(f'{MODULE_STUB}/assets'),
     },
     include_package_data=True,
     classifiers=[
@@ -28,7 +36,7 @@ setup(
     python_requires='>=3.11',
     entry_points={
         'console_scripts': [
-            'tiago_hello_world=hello_world.main:main',
+            f'tiago_hello_world={MODULE_STUB}.main:main',
         ],
     },
     install_requires=[  # Instala as dependências especificadas no requirements.txt

@@ -11,6 +11,7 @@ def main():
     print("Script path:", script_path)
     with open(parent_path / "assets/poetry.txt") as f:
         print(f.read())
-    
+    with open(parent_path / "assets/test_folder/test_something.txt") as f:
+        print(f.read())    
 if __name__ == "__main__":
     main()
