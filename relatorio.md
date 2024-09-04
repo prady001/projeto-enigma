@@ -150,17 +150,18 @@ A segunda maneira é clonar o repositório e fazer uma instalação local:
 
 ```bash
 git clone https://github.com/prady001/projeto-enigma.git
-cd hello_world
+cd projeto-enigma
 pip install .
 ```
 
 Após instalar, o programa `tiago_hello_world` deve estar instalado. Então, executando o comando:
 
 ```bash
-tiago_hello_world
+cd hello_world
+python enigma.py
 ```
 
-seu programa deveria imprimir a string `Hello world!` na tela
+seu programa deveria imprimir a string `Digite uma mensagem:` na tela
 
 ## Como Executar
 
